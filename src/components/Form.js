@@ -1,5 +1,20 @@
 import React, { Component } from 'react'
-import UsersList from './UsersList'
+
+
+const users = 
+    [
+        {
+            id: 147852,
+            username: 'Mike',
+            password: 'M!ke123'
+        },
+        {
+            id: 147853,
+            username: 'Mary',
+            password: 'm@ry456'
+        }        
+
+    ]
 
 class Form extends Component {
     constructor(props) {
@@ -23,13 +38,27 @@ class Form extends Component {
         })
     }
     
-    handleSubmit = (event) =>{
-        `${this.state.password}` === UsersList.user.password
-         && `${this.state.username}` === UsersList.user.username ? alert(`${this.state.username}
-        ${this.state.password}`) : alert('Incorrect Password')
+    handleSubmit = (event) =>{                   
+        event.preventDefault();
         
-                
-        event.preventDefault()
+        const userInList = users.find((user) => user.username === this.state.username);
+
+        if(userInList)
+        {
+            if(userInList.password !== this.state.password)
+            {
+                alert('Incorrect Password');
+            }
+            else
+            {
+                alert(`${this.state.username}
+                ${this.state.password}`);
+            }
+        }
+        else
+        {
+            alert('Incorrect User Name');
+        }
     }
     
   render() {

@@ -7,8 +7,7 @@ class Form extends Component {
     
       this.state = {
          username: '',
-         password: '',
-         
+         password: '',         
       }
     }
 
